@@ -63,26 +63,77 @@
 # Copies them into another folder
 # Keeps original names
 # Works for multiple files at once
+
+
 import os 
 
-source_folder="images"
-dest_folder="images_backup"
+# source_folder="images"
+# dest_folder="images_backup"
 
-# create the dest folder if doesn't exist
-if not os.path.exists(dest_folder):
-    os.mkdir(dest_folder)
-    # now we want to see all the images file of this folder 
-for file_name in os.listdir(source_folder):
-    if file_name.endswith(".jpeg" , ".webmp" ,".jpj" , ".png" ):
-        source_path=os.path.join(source_folder , file_name)
-        dest_path=os.path.join(dest_folder , file_name)
-        # now we have two paths to use , to read from one and write to anyone else 
-        with open(source_path , "r") as f:
-            data=f.read()
-        with open(dest_path , "w") as f:
-            f.write(data)
-            print(f"copied : {file_name}")
+# # create the dest_folder if doesn't exist
+# if not os.path.exists(dest_folder):  
+#     os.mkdir(dest_folder)
+#     # now we want to see all the images file of this folder 
+# for file_name in os.listdir(source_folder):
+#     if file_name.endswith((".jpeg" , ".webp" ,".jpg" , ".png" )): #remember to use tuple inside this endswith method 
+#         source_path=os.path.join(source_folder , file_name)
+#         dest_path=os.path.join(dest_folder , file_name)
+#         # now we have two paths to use , to read from one and write to anyone else 
+#         with open(source_path , "rb") as f:
+#             data=f.read()
+#         with open(dest_path , "wb") as f:
+#             f.write(data)
+#             print(f"copied : {file_name}")
 
-print(" all the files have been copied successfully! ")
+# print(" all the files have been copied successfully! ")
             
 
+# try again 
+
+#  Q-3
+# copying and writing the whole folder 
+
+# Reads all images from a folder
+# Copies them into another folder
+# Keeps original names
+# Works for multiple files at once
+
+
+
+# copy the folder and write ,it means we have to read from one and write in the other , read should exist as a source and the one we want to write in should either  exist or we should create one 
+
+source_folder="images"
+dest_folder="images_backup" 
+
+if not os.path.exists(dest_folder):
+    os.mkdir(dest_folder)
+for file_name in os.listdir(source_folder): #we can loop through a list , not a folder directly so listdir was used 
+    # now we want to know each image file in the folder , obviously we can't remember their names but we know their extensions so we can do this 
+    if file_name.endswith((".webp" , ".jpg" , ".jpeg" , ".png")):
+        # now we will create their file path 
+        source_path=os.path.join(source_folder , file_name)
+        dest_path=os.path.join(dest_folder , file_name)
+        with open(source_path, "rb") as f:
+            data=f.read()
+        with open(dest_path , "wb") as f:
+            f.write(data)
+            print(f"copied :{file_name} ")
+
+print(f"All the files have been copied successfuly , backup ready")
+
+# actually we opened and copied using the file paths , we didn't open a folder and paste the files in it but why we used folders because we had to create the file path folder+filename that's why we did that , for every file to be copied , so we stayed in the loop 
+
+
+
+# open file => open 
+# close file , better use with open as it automatically closes it as well 
+# read file , open in "r " mode and read binary with rb
+# writefile , write for binary wb
+# check if path exists , os.path.exists for current folder and give path r"c\" for other folders as well 
+# os.mkdir for creating folder 
+# os.listdir for listing all the files in that folder 
+# copy image read from one and copy to other , in  bytes 
+# to view the file , os.startfile to view or pillow library use image module to open image as well as show image 
+# to create the path with folder and file name ,use python's join method 
+# endswith is used to know the ending characters of string 
+# when you are reading the binary file , it will be so many  bytes so remember to use slicing for just few bites [:40]
