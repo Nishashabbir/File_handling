@@ -280,3 +280,48 @@ if exists()	no error system involved
 try block	Python watches for crashes
 except	runs ONLY if crash happens
 your current code	prevents errors → so except never run
+
+
+
+w3schools //////////////////////////
+
+"r" - Read - Default value. Opens a file for reading, error if the file does not exist
+"a" - Append - Opens a file for appending, creates the file if it does not exist
+"w" - Write - Opens a file for writing, creates the file if it does not exist
+"x" - Create - Creates the specified file, returns an error if the file exists
+
+To open a file for reading it is enough to specify the name of the file:
+f = open("demofile.txt")
+The code above is the same as:
+
+f = open("demofile.txt", "rt")
+Because "r" for read, and "t" for text are the default values, you do not need to specify them.
+
+removal of files and folder /////////////
+
+os.remove(file) it only removes the file that exists otherwise throws an error 
+os.rmdir(folder)
+
+but you can remove the folder only when its empty , if it has files already then it will throw an error 
+Using the os module, you cannot remove a folder if it contains files.
+ Why?
+The function:
+
+os.rmdir("folder_name")
+
+only works on empty folders. If the folder has even one file inside, it will throw an error.
+ Example (will fail if folder is not empty):
+os.rmdir("images_backup")
+ How to remove a folder WITH files:
+You need to use shutil instead:
+import shutil
+shutil.rmtree("images_backup")
+This deletes:
+
+the folder
+all files inside it
+all subfolders
+
+ Quick summary:
+os.rmdir() → only empty folders
+shutil.rmtree() → folders with content

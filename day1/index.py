@@ -4,7 +4,36 @@
 # f=open("guide.txt" , "r")
 # print(f) #here the file content will not be printed as  you are printing the file object, not the contents of the file. That’s why you see something
 
+# you can open any file in any folder by giving this path as well
+# f = open("D:\\myfiles\welcome.txt")
+# print(f.read())
+
+
+
 # 2- READING A FILE 
+# you can also read just the specified characters of the file 
+# with open("demofile.txt") as f:
+#   print(f.read(5))
+
+# read one line of the file 
+# with open("demofile.txt") as f:
+#   print(f.readline())
+
+# By calling readline() two times, you can read the two first lines:
+
+# if file has multiple lines , you can loop through those files as well 
+# Loop through the file line by line:
+
+# with open("demofile.txt") as f:
+#   for x in f:
+#     print(x)
+
+
+# # create a new file with specific name , if already present then throws the errors 
+# Create a new file called "myfile.txt":
+
+# f = open("myfile.txt", "x")
+
 # read all 
 # f=open("test.txt" , "r")
 # data=f.read()
@@ -185,18 +214,18 @@ from pathlib import Path
 
 # now doing this all with exception handling  //////////// 
 
-filepath=Path(r"C:\Users\User\Desktop\File_handling\day1\day0\tells.txt")
-try:
-    if filepath.exists():
-          with open(filepath, "w") as f:
-               print(f.write(" HI , I am handling the exceptions"))
-          with open(filepath, "r") as f:
-               print(f.read())
-    else:
-        print("not found")  #if you don't write this statement , nothing prints 
+# filepath=Path(r"C:\Users\User\Desktop\File_handling\day1\day0\tells.txt")
+# try:
+#     if filepath.exists():
+#           with open(filepath, "w") as f:
+#                print(f.write(" HI , I am handling the exceptions"))
+#           with open(filepath, "r") as f:
+#                print(f.read())
+#     else:
+#         print("not found")  #if you don't write this statement , nothing prints 
 
-except FileNotFoundError as e: #this will only trigger if naturally an error occur but we already confiremed if path exists or not 
-     print("file not found " , e)
+# except FileNotFoundError as e: #this will only trigger if naturally an error occur but we already confiremed if path exists or not 
+#      print("file not found " , e)
           
         # try2 
 # from pathlib import Path
@@ -235,5 +264,29 @@ except FileNotFoundError as e: #this will only trigger if naturally an error occ
 
 # except FileNotFoundError:
 #     print("File not found")
+
+
+# deleting a file /////////////////////////
+# to delte a file you need to load an os module 
+# os.remove("demofile.txt")
+
+# Check if file exists, then delete it:
+
+# import os
+# if os.path.exists("demofile.txt"):
+#   os.remove("demofile.txt")
+# else:
+#   print("The file does not exist")
+
+# #   to delte the folder 
+# os.rmdir("foldername") #only when the folder is empty 
+
+
+
+# and if not empty use shutil method 
+# import shutil
+# shutil.rmtree("demo_folder")
+# removing the file that exists 
+os.remove("demo.txt") #gone 
 
     

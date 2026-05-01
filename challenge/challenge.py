@@ -102,27 +102,49 @@ import os
 
 # copy the folder and write ,it means we have to read from one and write in the other , read should exist as a source and the one we want to write in should either  exist or we should create one 
 
-source_folder="images"
-dest_folder="images_backup" 
+# source_folder="images"
+# dest_folder="images_backup" 
 
-if not os.path.exists(dest_folder):
-    os.mkdir(dest_folder)
-for file_name in os.listdir(source_folder): #we can loop through a list , not a folder directly so listdir was used 
-    # now we want to know each image file in the folder , obviously we can't remember their names but we know their extensions so we can do this 
-    if file_name.endswith((".webp" , ".jpg" , ".jpeg" , ".png")):
-        # now we will create their file path 
-        source_path=os.path.join(source_folder , file_name)
-        dest_path=os.path.join(dest_folder , file_name)
-        with open(source_path, "rb") as f:
-            data=f.read()
-        with open(dest_path , "wb") as f:
-            f.write(data)
-            print(f"copied :{file_name} ")
+# if not os.path.exists(dest_folder):
+#     os.mkdir(dest_folder)
+# for file_name in os.listdir(source_folder): #we can loop through a list , not a folder directly so listdir was used 
+#     # now we want to know each image file in the folder , obviously we can't remember their names but we know their extensions so we can do this 
+#     if file_name.endswith((".webp" , ".jpg" , ".jpeg" , ".png")):
+#         # now we will create their file path 
+#         source_path=os.path.join(source_folder , file_name)
+#         dest_path=os.path.join(dest_folder , file_name)
+#         with open(source_path, "rb") as f:
+#             data=f.read()
+#         with open(dest_path , "wb") as f:
+#             f.write(data)
+#             print(f"copied :{file_name} ")
 
-print(f"All the files have been copied successfuly , backup ready")
+# print(f"All the files have been copied successfuly , backup ready")
 
 # actually we opened and copied using the file paths , we didn't open a folder and paste the files in it but why we used folders because we had to create the file path folder+filename that's why we did that , for every file to be copied , so we stayed in the loop 
 
+
+
+# a little better version  just one line to copy from  the source to destination 
+import os
+import shutil
+
+source_folder = "images"
+dest_folder = "images_backup"
+
+# create destination folder if it doesn't exist
+if not os.path.exists(dest_folder):
+    os.mkdir(dest_folder)
+
+for file_name in os.listdir(source_folder):
+    if file_name.endswith((".jpeg", ".webp", ".jpg", ".png")):
+        source_path = os.path.join(source_folder, file_name)
+        dest_path = os.path.join(dest_folder, file_name)
+
+        shutil.copy2(source_path, dest_path)
+        print(f"copied: {file_name}")
+
+print("All files copied successfully!")
 
 
 # open file => open 
