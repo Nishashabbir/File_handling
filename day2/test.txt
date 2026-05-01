@@ -1,0 +1,21 @@
+A function was called and i was written here A function was called and i was written here A function was called and i was written here 
+A function was called and i was written here 
+A function was called and i was written here 
+A function was called and i was written here 
+A function was called and i was written here 
+at 2026-05-01 15:18:36.638380 : Program started!at 2026-05-01 15:18:36.639008 : Program tw warr gya !A function was called and i was written here 
+at 2026-05-01 15:19:21.054364 : Program started!
+at 2026-05-01 15:19:21.055383 : Program tw warr gya !A function was called and i was written here 
+A function was called and i was written here 
+A function was called and i was written here 
+at None : Program started!
+at None : Program tw warr gya !A function was called and i was written here 
+
+at <built-in method now of type object at 0x00007FFB71AE5270> : Program started!
+at <built-in method now of type object at 0x00007FFB71AE5270> : Program tw warr gya !the user logged in successfully at 2026-05-01 15:49:28.701276
+The user attempted to log in at : 2026-05-01 15:51:11.627240
+The user attempted to log in at : 2026-05-01 15:51:16.637681
+The user attempted to log in at : 2026-05-01 15:51:21.314844
+the user logged in successfully at 2026-05-01 15:51:25.901029
+The user attempted to log in at : 2026-05-01 16:09:39.935916
+the user logged in successfully at 2026-05-01 16:09:46.504035

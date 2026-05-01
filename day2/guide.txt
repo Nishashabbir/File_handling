@@ -1,0 +1,125 @@
+What “Binary Mode” means
+with open("image.jpg", "rb") as f:
+ "rb" =
+"r" → read
+"b" → binary
+
+So:
+ “Read this file as raw bytes, not text”
+
+ Why we need binary mode
+
+Text files (like .txt, .py) → contain characters
+Images, videos, PDFs → contain raw bytes (0s and 1s)
+
+If you try:
+
+open("image.jpg", "r")
+
+You’ll likely get:
+
+ UnicodeDecodeError
+or garbage output
+ Correct way
+with open("image.jpg", "rb") as f:
+    data = f.read()
+    print(data[:50])  # print first 50 bytes
+Output looks like:
+b'\xff\xd8\xff\xe0\x00\x10JFIF...'
+
+ That b means: this is bytes, not text
+ What you can do with binary data
+1. Copy an image
+with open("image.jpg", "rb") as f:
+    data = f.read()
+
+with open("copy.jpg", "wb") as f:
+    f.write(data)
+
+ "wb" = write binary
+
+2. Download / upload files
+
+Used in:
+
+web apps
+APIs
+file transfers
+ Text vs Binary
+Type	Mode	Example
+Text	"r" / "w"	.txt, .py
+Binary	"rb" / "wb"	.jpg, .png, .pdf
+ Important rule
+
+ Use "b" when:
+
+file is NOT human-readable
+contains images, audio, video, etc.
+
+///////////////////////////////////////////
+open() does NOT display files
+ It only reads data into your program
+
+ Why your idea doesn’t work directly
+
+When you do:
+
+with open("image.jpg", "rb") as f:
+    data = f.read()
+    print(data)
+
+Python gives you:
+
+b'\xff\xd8\xff\xe0...'
+
+That’s:
+ raw binary data (bytes)
+ NOT something your terminal can “show as an image”
+
+📸 Think of it like this
+Image file = compressed pixel data
+open() = just grabs the raw bytes
+Terminal = can only show text, not images
+
+So nothing visual appears.
+
+ How to actually VIEW the image
+Option 1: Open with system viewer (simple)
+import os
+os.startfile("image.jpg")   # Windows only
+
+ This opens the image in your default image viewer
+
+Option 2: Use Python library (more “programmer way”)
+
+Using PIL (Pillow):
+
+from PIL import Image
+
+img = Image.open("image.jpg")
+img.show()
+
+ This will display the image
+
+ So what is "rb" actually useful for?
+
+Not for viewing — but for:
+
+copying images
+uploading/downloading files
+sending files over internet
+processing images (with libraries)
+ Big picture
+Task	Method
+View image	image viewer / PIL
+Read raw data	open(..., "rb")
+Process image	libraries (Pillow, OpenCV)
+ Simple takeaway
+
+ open() = read data
+ NOT = display fil
+
+Encoding (Advanced but Important)
+with open("file.txt", "r", encoding="utf-8") as f:
+
+Avoid weird character errors.

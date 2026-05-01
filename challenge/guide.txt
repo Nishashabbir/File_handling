@@ -1,0 +1,55 @@
+
+in the student.txt file operations ///////////////
+name, marks = line.split(",")
+
+Yes — you are assigning two variables at once. This is called unpacking.
+
+ Step-by-step with your example
+
+File line:
+
+nisha,19
+1. Read line
+line = "nisha,19"
+2. Split it
+line.split(",")
+
+ Output:
+
+["nisha", "19"]
+
+This is a list with 2 items.
+
+3. Unpacking happens
+name, marks = ["nisha", "19"]
+
+ Python does:
+
+name = "nisha"
+marks = "19"
+ So what are name and marks?
+
+They are just variables that store:
+
+name → "nisha" (string)
+marks → "19" (string → later converted to int
+
+
+split() #split is a string method and it splits the londer string into small pieces of string in form of list *
+
+its reverse is JOIN () => which takes the small string pieces and converts it into the longer string 
+
+words=["Ali" , "19"]
+result= "".join(words)
+print(result)
+
+
+text= "Ali 85"
+print(text.split())
+
+
+do more projects like : 
+1.  Auto detect image types (no manual .endswith)
+2.  Copy subfolders too (recursive backup)
+3.  ZIP all images into one file
+4.  Resize images while copying (real image processing
